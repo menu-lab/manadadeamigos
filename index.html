@@ -38,7 +38,6 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Contenedor adaptativo 900x1700 para cualquier pantalla móvil */
     .app-container {
       position: relative;
       height: 100vh;
@@ -65,7 +64,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(4px);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
@@ -82,7 +81,7 @@
       fill: #7d8b72;
     }
 
-    /* Botones táctiles transparentes sobre el afiche original */
+    /* Botones táctiles transparentes */
     .touch-btn {
       position: absolute;
       display: block;
@@ -99,34 +98,10 @@
       background-color: rgba(255, 255, 255, 0.18);
     }
 
-    /* Coordenadas calibradas */
-    .btn-whatsapp {
-      top: 27.2%;
-      left: 8.5%;
-      width: 83%;
-      height: 8.2%;
-    }
-
-    .btn-instagram {
-      top: 36.6%;
-      left: 8.5%;
-      width: 83%;
-      height: 8.2%;
-    }
-
-    .btn-website {
-      top: 46.0%;
-      left: 8.5%;
-      width: 83%;
-      height: 8.2%;
-    }
-
-    .btn-tiktok {
-      top: 55.4%;
-      left: 8.5%;
-      width: 83%;
-      height: 8.2%;
-    }
+    .btn-whatsapp { top: 27.2%; left: 8.5%; width: 83%; height: 8.2%; }
+    .btn-instagram { top: 36.6%; left: 8.5%; width: 83%; height: 8.2%; }
+    .btn-website { top: 46.0%; left: 8.5%; width: 83%; height: 8.2%; }
+    .btn-tiktok { top: 55.4%; left: 8.5%; width: 83%; height: 8.2%; }
 
     /* Footer Fijo de Geolocalización */
     .btn-visitanos {
@@ -141,7 +116,7 @@
       background-color: rgba(74, 88, 64, 0.15);
     }
 
-    /* Capa de Huellas Interactivas */
+    /* Capa de Huellas Interactivas (reducidas al 50%: 22x22px) */
     #pawLayer {
       position: absolute;
       top: 0;
@@ -149,32 +124,32 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 15;
+      z-index: 20;
       overflow: hidden;
     }
 
     .paw-print {
       position: absolute;
-      width: 44px;
-      height: 44px;
+      width: 22px;
+      height: 22px;
       opacity: 0;
-      transform: scale(0.6);
-      transition: opacity 0.5s ease-in, transform 0.5s ease-out;
-      filter: drop-shadow(0 2px 4px rgba(60, 40, 20, 0.12));
+      transform: scale(0.5);
+      transition: opacity 0.35s ease-in, transform 0.35s ease-out;
+      filter: drop-shadow(0 1px 2px rgba(60, 40, 20, 0.18));
     }
 
     .paw-print.visible {
-      opacity: 0.65;
+      opacity: 0.72;
       transform: scale(1);
     }
 
     .paw-print.fade-out {
       opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      transform: scale(0.85);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
-    /* Capa de Accesorios Estacionales Automáticos */
+    /* Accesorios Estacionales Automáticos */
     #seasonalLayer {
       position: absolute;
       top: 64%;
@@ -199,11 +174,11 @@
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="app-container" id="appContainer">
     <!-- Reproductor de Audio (selecciona aleatoriamente sonido1.mp3 o sonido2.mp3) -->
     <audio id="bgMusic" loop preload="auto"></audio>
 
-    <!-- Botón Toggle de Sonido -->
+    <!-- Control Toggle de Audio -->
     <div id="soundToggle" class="muted" title="Activar/Desactivar Música">
       <svg id="soundIcon" viewBox="0 0 24 24">
         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
@@ -256,19 +231,13 @@
       </div>
     </div>
 
-    <!-- 1. Botón WhatsApp -->
+    <!-- Botones Táctiles -->
     <a href="https://wa.me/56941173661?text=Hola%20Manada%20de%20Amigos,%20me%20gustar%C3%ADa%20hacerles%20una%20consulta.%20Mi%20nombre%20es:%20" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp Manada de Amigos"></a>
-
-    <!-- 2. Botón Instagram -->
     <a href="https://www.instagram.com/manadadeamigos" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Instagram @manadadeamigos"></a>
-
-    <!-- 3. Botón Website -->
     <a href="https://www.manadadeamigos.cl" target="_blank" rel="noopener" class="touch-btn btn-website" title="Sitio Web Manada de Amigos"></a>
-
-    <!-- 4. Botón TikTok -->
     <a href="https://www.tiktok.com/@manadadeamigos" target="_blank" rel="noopener" class="touch-btn btn-tiktok" title="TikTok @manadadeamigos"></a>
 
-    <!-- 5. Footer Fijo: Ubicación y Cómo Llegar (Google Maps) -->
+    <!-- Footer Fijo de Geolocalización -->
     <a href="https://www.google.com/maps/search/?api=1&query=Seminario+850+local+4,+Nunoa,+Santiago" target="_blank" rel="noopener" class="touch-btn btn-visitanos" title="Cómo llegar a Manada de Amigos"></a>
   </div>
 
@@ -279,7 +248,6 @@
     const audio = document.getElementById('bgMusic');
     audio.src = chosenTrack;
 
-    // Control Toggle de Audio
     const soundToggle = document.getElementById('soundToggle');
     const soundIcon = document.getElementById('soundIcon');
     const iconMuted = 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z';
@@ -300,25 +268,24 @@
 
     // 2. Accesorios estacionales automáticos por mes
     function applySeasonalAccessories() {
-      const month = new Date().getMonth(); // 0 = Ene, 8 = Sep, 9 = Oct, 11 = Dic
-      if (month === 8) {
-        // Septiembre: Fiestas Patrias
+      const month = new Date().getMonth();
+      if (month === 8) { // Septiembre
         document.getElementById('chupallaHuaso').style.display = 'block';
         document.getElementById('remolino18').style.display = 'block';
-      } else if (month === 9) {
-        // Octubre: Halloween
+      } else if (month === 9) { // Octubre
         document.getElementById('sombreroBruja').style.display = 'block';
-      } else if (month === 11) {
-        // Diciembre: Navidad
+      } else if (month === 11) { // Diciembre
         document.getElementById('gorroNavidad').style.display = 'block';
       }
     }
     applySeasonalAccessories();
 
-    // 3. Huellas animadas aleatorias (primera a los 5s, luego cada 20-30s)
+    // 3. Motor de Huellas Dinámicas de Pantalla Completa
     const pawLayer = document.getElementById('pawLayer');
+    const container = document.getElementById('appContainer');
+
     const pawSVG = `
-      <svg viewBox="0 0 100 100" fill="#4a5840">
+      <svg viewBox="0 0 100 100" fill="#3b4834" width="100%" height="100%">
         <ellipse cx="50" cy="65" rx="22" ry="18"/>
         <circle cx="24" cy="38" r="9"/>
         <circle cx="41" cy="27" r="9"/>
@@ -328,12 +295,26 @@
     `;
 
     function walkPawsSequence() {
-      const steps = 4 + Math.floor(Math.random() * 2);
-      const startX = 60 + Math.random() * 680;
-      const startY = 350 + Math.random() * 850;
-      const angle = (Math.random() * 80 - 40) * (Math.PI / 180);
-      const stepDistance = 65;
-      const stepSide = 24;
+      const rect = container.getBoundingClientRect();
+      const W = rect.width;
+      const H = rect.height;
+
+      // Rutas posibles que cruzan de lado a lado en distintas alturas
+      const routes = [
+        { x0: -30, y0: H * 0.22, x1: W + 30, y1: H * 0.28 }, // Cruce superior
+        { x0: W + 30, y0: H * 0.42, x1: -30, y1: H * 0.48 }, // Cruce medio hacia la izquierda
+        { x0: -30, y0: H * 0.62, x1: W + 30, y1: H * 0.70 }, // Cruce medio-bajo
+        { x0: -30, y0: H * 0.15, x1: W + 30, y1: H * 0.85 }, // Diagonal descendente completa
+        { x0: W + 30, y0: H * 0.80, x1: -30, y1: H * 0.20 }  // Diagonal ascendente completa
+      ];
+
+      const route = routes[Math.floor(Math.random() * routes.length)];
+      const totalDistance = Math.hypot(route.x1 - route.x0, route.y1 - route.y0);
+      const stepDistance = 42; // Distancia entre pisadas
+      const steps = Math.floor(totalDistance / stepDistance);
+      const angle = Math.atan2(route.y1 - route.y0, route.x1 - route.x0);
+      const baseRotation = (angle * 180 / Math.PI) + 90;
+      const stepSide = 12; // Separación izquierda/derecha de patitas
 
       for (let i = 0; i < steps; i++) {
         setTimeout(() => {
@@ -341,20 +322,23 @@
           paw.className = 'paw-print';
           paw.innerHTML = pawSVG;
 
+          const progress = i / steps;
+          const currentDist = i * stepDistance;
           const sideOffset = (i % 2 === 0 ? 1 : -1) * stepSide;
-          const posX = startX + Math.cos(angle) * (i * stepDistance) - Math.sin(angle) * sideOffset;
-          const posY = startY + Math.sin(angle) * (i * stepDistance) + Math.cos(angle) * sideOffset;
-          const rotationDeg = (angle * 180 / Math.PI) + 90 + (i % 2 === 0 ? 8 : -8);
+
+          const posX = (route.x0 + Math.cos(angle) * currentDist) - Math.sin(angle) * sideOffset;
+          const posY = (route.y0 + Math.sin(angle) * currentDist) + Math.cos(angle) * sideOffset;
+          const rot = baseRotation + (i % 2 === 0 ? 6 : -6);
 
           paw.style.left = `${posX}px`;
           paw.style.top = `${posY}px`;
-          paw.style.transform = `scale(0.6) rotate(${rotationDeg}deg)`;
+          paw.style.transform = `scale(0.5) rotate(${rot}deg)`;
 
           pawLayer.appendChild(paw);
 
           requestAnimationFrame(() => {
             paw.classList.add('visible');
-            paw.style.transform = `scale(1) rotate(${rotationDeg}deg)`;
+            paw.style.transform = `scale(1) rotate(${rot}deg)`;
           });
 
           setTimeout(() => {
@@ -362,14 +346,14 @@
             paw.classList.add('fade-out');
             setTimeout(() => {
               paw.remove();
-            }, 800);
-          }, 1400);
+            }, 650);
+          }, 1200);
 
-        }, i * 360);
+        }, i * 220); // Cadencia de caminata continua
       }
     }
 
-    // Inicio a los 5 segundos y repetición cada 20 a 30s
+    // Primera caminata a los 5 segundos; luego cada 20 a 30 segundos
     setTimeout(() => {
       walkPawsSequence();
       function scheduleNextWalk() {
