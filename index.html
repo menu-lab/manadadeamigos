@@ -115,7 +115,7 @@
       background-color: rgba(74, 88, 64, 0.15);
     }
 
-    /* Huellas en tono Burdeos (22x22px) */
+    /* Huellas Burdeos - Animación más pausada */
     #pawLayer {
       position: absolute;
       top: 0;
@@ -132,8 +132,8 @@
       width: 22px;
       height: 22px;
       opacity: 0;
-      transform: scale(0.5);
-      transition: opacity 0.35s ease-in, transform 0.35s ease-out;
+      transform: scale(0.4);
+      transition: opacity 0.5s ease-in, transform 0.5s ease-out;
       filter: drop-shadow(0 1px 2px rgba(80, 10, 20, 0.25));
     }
 
@@ -144,8 +144,8 @@
 
     .paw-print.fade-out {
       opacity: 0;
-      transform: scale(0.85);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: scale(0.8);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     }
 
     /* Accesorios Estacionales */
@@ -229,7 +229,7 @@
   </div>
 
   <script>
-    // Alternancia estricta entre sonido1.mp3 y sonido2.mp3 por recarga
+    // Rotación real sonido1 / sonido2 por sesión/recarga
     const tracks = ['sonido1.mp3', 'sonido2.mp3'];
     let lastTrack = localStorage.getItem('lastPlayedTrack');
     let nextTrack = (lastTrack === 'sonido1.mp3') ? 'sonido2.mp3' : 'sonido1.mp3';
@@ -256,7 +256,7 @@
       }
     });
 
-    // Accesorios estacionales automáticos
+    // Detección estacional
     function applySeasonalAccessories() {
       const month = new Date().getMonth();
       if (month === 8) {
@@ -270,7 +270,7 @@
     }
     applySeasonalAccessories();
 
-    // Huellas dinámicas en tono burdeos (#6b1d2f) cada 15 segundos
+    // Huellas en burdeos: caminata pausada
     const pawLayer = document.getElementById('pawLayer');
     const container = document.getElementById('appContainer');
 
@@ -299,7 +299,7 @@
 
       const route = routes[Math.floor(Math.random() * routes.length)];
       const totalDistance = Math.hypot(route.x1 - route.x0, route.y1 - route.y0);
-      const stepDistance = 42;
+      const stepDistance = 46;
       const steps = Math.floor(totalDistance / stepDistance);
       const angle = Math.atan2(route.y1 - route.y0, route.x1 - route.x0);
       const baseRotation = (angle * 180 / Math.PI) + 90;
@@ -320,32 +320,34 @@
 
           paw.style.left = `${posX}px`;
           paw.style.top = `${posY}px`;
-          paw.style.transform = `scale(0.5) rotate(${rot}deg)`;
+          paw.style.transform = `scale(0.4) rotate(${rot}deg)`;
 
           pawLayer.appendChild(paw);
 
+          // Entrada suave
           requestAnimationFrame(() => {
             paw.classList.add('visible');
             paw.style.transform = `scale(1) rotate(${rot}deg)`;
           });
 
+          // Permanece visible más tiempo y desvanece lento (1.2s)
           setTimeout(() => {
             paw.classList.remove('visible');
             paw.classList.add('fade-out');
             setTimeout(() => {
               paw.remove();
-            }, 650);
-          }, 1200);
+            }, 1200);
+          }, 1500);
 
-        }, i * 220);
+        }, i * 380); // Ritmo de caminata más pausado
       }
     }
 
-    // Inicio a los 5s y repetición cada 15 segundos exactos
+    // Comienza a los 4s y repite cada 10 segundos exactos
     setTimeout(() => {
       walkPawsSequence();
-      setInterval(walkPawsSequence, 15000);
-    }, 5000);
+      setInterval(walkPawsSequence, 10000);
+    }, 4000);
   </script>
 </body>
 </html>
