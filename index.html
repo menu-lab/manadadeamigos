@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Manada de Amigos - Pet Shop & Boutique</title>
 
-  <!-- Favicon Oficial 32x32 px integrado directamente (Patita verde oliva en fondo blanco puro) -->
+  <!-- Favicon Oficial 32x32 px en Base64 (Patita verde oliva en fondo blanco puro) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23ffffff'/%3E%3Cellipse cx='16' cy='21' rx='7.5' ry='6' fill='%234a5840'/%3E%3Cellipse cx='8' cy='13' rx='2.5' ry='3.5' transform='rotate(-20 8 13)' fill='%234a5840'/%3E%3Cellipse cx='13' cy='9.5' rx='2.5' ry='3.8' transform='rotate(-6 13 9.5)' fill='%234a5840'/%3E%3Cellipse cx='19' cy='9.5' rx='2.5' ry='3.8' transform='rotate(6 19 9.5)' fill='%234a5840'/%3E%3Cellipse cx='24' cy='13' rx='2.5' ry='3.5' transform='rotate(20 24 13)' fill='%234a5840'/%3E%3C/svg%3E">
 
-  <!-- Metadatos de Redes Sociales -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Manada de Amigos - Pet Shop & Boutique">
   <meta property="og:description" content="Más que mascotas, son familia. Conecta con nuestra manada en Seminario 850, Ñuñoa.">
@@ -36,7 +35,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Contenedor adaptativo 900x1700 que ajusta a cualquier pantalla de smartphone */
+    /* Contenedor adaptativo continuo de borde a borde (900x1700) */
     .app-container {
       position: relative;
       height: 100vh;
@@ -44,13 +43,15 @@
       width: calc(100dvh * (900 / 1700));
       max-width: 100vw;
       aspect-ratio: 900 / 1700;
-      background: url('350594.jpg') no-repeat center top;
+      background-position: center top;
+      background-repeat: no-repeat;
       background-size: 100% 100%;
       overflow: hidden;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+      transition: background-image 0.3s ease-in-out;
     }
 
-    /* Control de sonido superior izquierdo */
+    /* Control de Sonido superior izquierdo */
     #soundToggle {
       position: absolute;
       top: 2.2%;
@@ -80,14 +81,14 @@
       fill: #7d8b72;
     }
 
-    /* Botones Táctiles Transparentes calibrados sobre el diseño */
+    /* Botones táctiles transparentes */
     .touch-btn {
       position: absolute;
       display: block;
       cursor: pointer;
       text-decoration: none;
       border-radius: 50px;
-      z-index: 10;
+      z-index: 25;
       background: transparent;
       transition: transform 0.15s ease, background-color 0.15s ease;
     }
@@ -102,7 +103,7 @@
     .btn-website { top: 46.0%; left: 8.5%; width: 83%; height: 8.2%; }
     .btn-tiktok { top: 55.4%; left: 8.5%; width: 83%; height: 8.2%; }
 
-    /* Footer Fijo de Geolocalización */
+    /* Footer Fijo de Ubicación */
     .btn-visitanos {
       top: 86.2%;
       left: 8.5%;
@@ -147,28 +148,6 @@
       transform: scale(0.8);
       transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     }
-
-    /* Capa de Accesorios Estacionales Automáticos */
-    #seasonalLayer {
-      position: absolute;
-      top: 64%;
-      left: 8%;
-      width: 84%;
-      height: 22%;
-      pointer-events: none;
-      z-index: 12;
-    }
-
-    .season-item {
-      position: absolute;
-      display: none;
-      animation: floatItem 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatItem {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-4px) rotate(2deg); }
-    }
   </style>
 </head>
 <body>
@@ -187,61 +166,64 @@
     <!-- Capa de Huellas Interactivas -->
     <div id="pawLayer"></div>
 
-    <!-- Capa de Accesorios Estacionales -->
-    <div id="seasonalLayer">
-      <!-- Septiembre: Fiestas Patrias -->
-      <div id="chupallaHuaso" class="season-item" style="top: -6%; left: 36%; width: 26%;">
-        <svg viewBox="0 0 120 70" width="100%" height="100%">
-          <ellipse cx="60" cy="52" rx="55" ry="14" fill="#c29b61" stroke="#5a3d1b" stroke-width="2.5"/>
-          <path d="M30 50 Q60 15 90 50 Z" fill="#dfbe82" stroke="#5a3d1b" stroke-width="2.5"/>
-          <rect x="35" y="44" width="50" height="7" fill="#1b4d89"/>
-          <rect x="52" y="44" width="16" height="7" fill="#d32f2f"/>
-          <polygon points="60,45 61,48 64,48 62,50 63,53 60,51 57,53 58,50 56,48 59,48" fill="#ffffff"/>
-        </svg>
-      </div>
-      <div id="remolino18" class="season-item" style="top: 15%; left: 56%; width: 14%;">
-        <svg viewBox="0 0 80 80" width="100%" height="100%">
-          <line x1="40" y1="40" x2="40" y2="78" stroke="#8d6e63" stroke-width="3"/>
-          <path d="M40 40 L40 10 L20 25 Z" fill="#1565c0"/>
-          <path d="M40 40 L70 40 L55 20 Z" fill="#ffffff" stroke="#ccc" stroke-width="0.5"/>
-          <path d="M40 40 L40 70 L60 55 Z" fill="#c62828"/>
-          <path d="M40 40 L10 40 L25 60 Z" fill="#1565c0"/>
-          <circle cx="40" cy="40" r="3" fill="#ffb300"/>
-        </svg>
-      </div>
-
-      <!-- Octubre: Halloween -->
-      <div id="sombreroBruja" class="season-item" style="top: -10%; left: 38%; width: 22%;">
-        <svg viewBox="0 0 100 90" width="100%" height="100%">
-          <ellipse cx="50" cy="78" rx="46" ry="10" fill="#212121"/>
-          <path d="M22 76 Q50 8 52 10 Q65 14 78 76 Z" fill="#37474f"/>
-          <rect x="32" y="68" width="36" height="7" fill="#ff6f00"/>
-          <rect x="45" y="66" width="10" height="11" fill="none" stroke="#ffd54f" stroke-width="2"/>
-        </svg>
-      </div>
-
-      <!-- Diciembre: Navidad -->
-      <div id="gorroNavidad" class="season-item" style="top: -8%; left: 37%; width: 24%;">
-        <svg viewBox="0 0 100 80" width="100%" height="100%">
-          <path d="M25 60 Q50 10 75 40 Q85 55 75 60 Z" fill="#d32f2f"/>
-          <ellipse cx="50" cy="62" rx="35" ry="9" fill="#ffffff"/>
-          <circle cx="80" cy="45" r="9" fill="#ffffff"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Botones Táctiles Interactivos -->
+    <!-- Botonera Central Interactiva -->
     <a href="https://wa.me/56941173661?text=Hola%20Manada%20de%20Amigos,%20me%20gustar%C3%ADa%20hacerles%20una%20consulta.%20Mi%20nombre%20es:%20" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp"></a>
     <a href="https://www.instagram.com/manadadeamigos" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Instagram"></a>
     <a href="https://www.manadadeamigos.cl" target="_blank" rel="noopener" class="touch-btn btn-website" title="Sitio Web"></a>
     <a href="https://www.tiktok.com/@manadadeamigos" target="_blank" rel="noopener" class="touch-btn btn-tiktok" title="TikTok"></a>
 
-    <!-- Footer Fijo: Ubicación y Cómo Llegar -->
+    <!-- Footer Fijo de Ubicación y Cómo Llegar -->
     <a href="https://www.google.com/maps/search/?api=1&query=Seminario+850+local+4,+Nunoa,+Santiago" target="_blank" rel="noopener" class="touch-btn btn-visitanos" title="Ubicación y Cómo llegar"></a>
   </div>
 
   <script>
-    // 1. Rotación estricta entre sonido1.mp3 y sonido2.mp3 por recarga/sesión
+    // 1. Selector de Fondo Dinámico con verificación dual (.jpg / .jpeg)
+    const appContainer = document.getElementById('appContainer');
+    const currentMonth = new Date().getMonth(); // 0 = Ene, 1 = Feb, 2 = Mar, ..., 8 = Sep, 9 = Oct, 10 = Nov, 11 = Dic
+
+    // Mapeo según los archivos exactos de tu carpeta
+    let baseFileName = null;
+
+    if (currentMonth === 0 || currentMonth === 1) {
+      baseFileName = 'base_enero_febrero'; // Enero y Febrero
+    } else if (currentMonth === 2) {
+      baseFileName = 'base_marzo';         // Marzo
+    } else if (currentMonth === 8) {
+      baseFileName = 'base_septiembre';    // Septiembre
+    } else if (currentMonth === 9) {
+      baseFileName = 'base_octubre';       // Octubre
+    } else if (currentMonth === 10) {
+      baseFileName = 'base_noviembre';     // Noviembre
+    }
+
+    // Función inteligente de carga con soporte jpg/jpeg y respaldo a 350594.jpg
+    function setAppBackground(baseName) {
+      if (!baseName) {
+        appContainer.style.backgroundImage = "url('350594.jpg')";
+        return;
+      }
+
+      const testJpg = new Image();
+      testJpg.onload = () => {
+        appContainer.style.backgroundImage = `url('${baseName}.jpg')`;
+      };
+      testJpg.onerror = () => {
+        const testJpeg = new Image();
+        testJpeg.onload = () => {
+          appContainer.style.backgroundImage = `url('${baseName}.jpeg')`;
+        };
+        testJpeg.onerror = () => {
+          // Si no encuentra ninguna de las dos variantes, carga la base neutra
+          appContainer.style.backgroundImage = "url('350594.jpg')";
+        };
+        testJpeg.src = `${baseName}.jpeg`;
+      };
+      testJpg.src = `${baseName}.jpg`;
+    }
+
+    setAppBackground(baseFileName);
+
+    // 2. Alternancia estricta entre sonido1 y sonido2 por sesión
     const tracks = ['sonido1.mp3', 'sonido2.mp3'];
     let lastTrack = localStorage.getItem('lastPlayedTrack');
     let nextTrack = (lastTrack === 'sonido1.mp3') ? 'sonido2.mp3' : 'sonido1.mp3';
@@ -268,21 +250,7 @@
       }
     });
 
-    // 2. Detección de accesorios estacionales
-    function applySeasonalAccessories() {
-      const month = new Date().getMonth(); // 8 = Sep, 9 = Oct, 11 = Dic
-      if (month === 8) {
-        document.getElementById('chupallaHuaso').style.display = 'block';
-        document.getElementById('remolino18').style.display = 'block';
-      } else if (month === 9) {
-        document.getElementById('sombreroBruja').style.display = 'block';
-      } else if (month === 11) {
-        document.getElementById('gorroNavidad').style.display = 'block';
-      }
-    }
-    applySeasonalAccessories();
-
-    // 3. Motor Cinemático de Huellas Aleatorias de Pantalla Completa
+    // 3. Motor de Huellas Dinámicas de Pantalla Completa (Tono Burdeos)
     const pawLayer = document.getElementById('pawLayer');
     const container = document.getElementById('appContainer');
 
@@ -301,13 +269,13 @@
     function getRandomTrajectory(W, H) {
       const routes = [
         { x0: -30, y0: H * 0.08, x1: W + 30, y1: H * 0.12 }, // Encabezado / Logo
-        { x0: -30, y0: -20, x1: W + 30, y1: H + 30 },        // Diagonal completa X descendente
-        { x0: -30, y0: H + 30, x1: W + 30, y1: -20 },        // Diagonal completa X ascendente
+        { x0: -30, y0: -20, x1: W + 30, y1: H + 30 },        // Diagonal completa descendente
+        { x0: -30, y0: H + 30, x1: W + 30, y1: -20 },        // Diagonal completa ascendente
         { x0: W * 0.28, y0: -30, x1: W * 0.35, y1: H + 30 }, // Vertical descendente
         { x0: W * 0.72, y0: H + 30, x1: W * 0.65, y1: -30 }, // Vertical ascendente
         { x0: W + 30, y0: H * 0.05, x1: -30, y1: H * 0.92 }, // Diagonal inversa cruzada
         { x0: W + 30, y0: H * 0.76, x1: -30, y1: H * 0.82 }, // Zona baja sobre mascotas
-        { x0: -30, y0: H * 0.32, x1: W + 30, y1: H * 0.16 }, // Diagonal corta alta
+        { x0: -30, y0: H * 0.32, x1: W + 30, y1: H * 0.16 }, // Diagonal corta superior
         { x0: -30, y0: H * 0.90, x1: W + 30, y1: H * 0.52 }, // Diagonal baja a media
         { x0: -30, y0: H * 0.94, x1: W + 30, y1: H * 0.96 }  // Cruce de footer
       ];
@@ -370,7 +338,6 @@
       }
     }
 
-    // Comienza a los 3 segundos y se repite cada 10 segundos
     setTimeout(() => {
       walkPawsSequence();
       setInterval(walkPawsSequence, 10000);
