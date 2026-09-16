@@ -81,43 +81,6 @@
       fill: #7d8b72;
     }
 
-    /* Pastilla Fija Estática de Horario (Superior Derecha) */
-    .schedule-badge-static {
-      position: absolute;
-      top: 2.2%;
-      right: 3.8%;
-      height: 5.5%;
-      padding: 4px 10px;
-      z-index: 35;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(74, 88, 64, 0.25);
-      pointer-events: none;
-    }
-
-    .sched-title {
-      font-size: 9.5px;
-      font-weight: 800;
-      color: #4a5840;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      line-height: 1.1;
-    }
-
-    .sched-line {
-      font-size: 8.5px;
-      font-weight: 700;
-      color: #2e3628;
-      line-height: 1.15;
-      white-space: nowrap;
-    }
-
     /* Botones táctiles transparentes */
     .touch-btn {
       position: absolute;
@@ -151,6 +114,23 @@
 
     .btn-visitanos:active {
       background-color: rgba(74, 88, 64, 0.15);
+    }
+
+    /* Texto de Horario en una sola línea bajo el botón Visítanos */
+    .bottom-schedule-line {
+      position: absolute;
+      top: 95.2%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #333d2e;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 26;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
     }
 
     /* Capa de Huellas Interactivas (color burdeos 22x22px) */
@@ -200,13 +180,6 @@
       </svg>
     </div>
 
-    <!-- Pastilla Estática de Horario (Superior Derecha) -->
-    <div class="schedule-badge-static">
-      <span class="sched-title">Horario de Atención</span>
-      <span class="sched-line">Lun - Vie: 10:00 - 20:00</span>
-      <span class="sched-line">Sábado: 09:00 - 14:00</span>
-    </div>
-
     <!-- Capa de Huellas Interactivas -->
     <div id="pawLayer"></div>
 
@@ -218,6 +191,9 @@
 
     <!-- Footer Fijo de Ubicación y Cómo Llegar -->
     <a href="https://www.google.com/maps/search/?api=1&query=Seminario+850+local+4,+Nunoa,+Santiago" target="_blank" rel="noopener" class="touch-btn btn-visitanos" title="Ubicación y Cómo llegar"></a>
+
+    <!-- Horario en una sola línea bajo el botón Visítanos -->
+    <div class="bottom-schedule-line">Horario: Lun-Vie 10:00 a 20:00 hrs | Sáb 09:00 a 14:00 hrs</div>
   </div>
 
   <script>
