@@ -58,20 +58,20 @@
       left: 3.8%;
       width: 10%;
       height: 5.5%;
-      z-index: 30;
+      z-index: 35;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(4px);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     }
 
     #soundIcon {
-      width: 65%;
-      height: 65%;
+      width: 60%;
+      height: 60%;
       fill: #4a5840;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
@@ -79,6 +79,43 @@
     #soundToggle.muted #soundIcon {
       opacity: 0.45;
       fill: #7d8b72;
+    }
+
+    /* Pastilla Fija Estática de Horario (Superior Derecha) */
+    .schedule-badge-static {
+      position: absolute;
+      top: 2.2%;
+      right: 3.8%;
+      height: 5.5%;
+      padding: 4px 10px;
+      z-index: 35;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(74, 88, 64, 0.25);
+      pointer-events: none;
+    }
+
+    .sched-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #4a5840;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      line-height: 1.1;
+    }
+
+    .sched-line {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #2e3628;
+      line-height: 1.15;
+      white-space: nowrap;
     }
 
     /* Botones táctiles transparentes */
@@ -156,11 +193,18 @@
     <!-- Reproductor de Audio -->
     <audio id="bgMusic" loop preload="auto"></audio>
 
-    <!-- Botón Toggle de Sonido -->
+    <!-- Botón Toggle de Sonido (Superior Izquierdo) -->
     <div id="soundToggle" class="muted" title="Activar/Desactivar Música">
       <svg id="soundIcon" viewBox="0 0 24 24">
         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
       </svg>
+    </div>
+
+    <!-- Pastilla Estática de Horario (Superior Derecha) -->
+    <div class="schedule-badge-static">
+      <span class="sched-title">Horario de Atención</span>
+      <span class="sched-line">Lun - Vie: 10:00 - 20:00</span>
+      <span class="sched-line">Sábado: 09:00 - 14:00</span>
     </div>
 
     <!-- Capa de Huellas Interactivas -->
@@ -179,24 +223,22 @@
   <script>
     // 1. Selector de Fondo Dinámico con verificación dual (.jpg / .jpeg)
     const appContainer = document.getElementById('appContainer');
-    const currentMonth = new Date().getMonth(); // 0 = Ene, 1 = Feb, 2 = Mar, ..., 8 = Sep, 9 = Oct, 10 = Nov, 11 = Dic
+    const currentMonth = new Date().getMonth();
 
-    // Mapeo según los archivos exactos de tu carpeta
     let baseFileName = null;
 
     if (currentMonth === 0 || currentMonth === 1) {
-      baseFileName = 'base_enero_febrero'; // Enero y Febrero
+      baseFileName = 'base_enero_febrero';
     } else if (currentMonth === 2) {
-      baseFileName = 'base_marzo';         // Marzo
+      baseFileName = 'base_marzo';
     } else if (currentMonth === 8) {
-      baseFileName = 'base_septiembre';    // Septiembre
+      baseFileName = 'base_septiembre';
     } else if (currentMonth === 9) {
-      baseFileName = 'base_octubre';       // Octubre
+      baseFileName = 'base_octubre';
     } else if (currentMonth === 10) {
-      baseFileName = 'base_noviembre';     // Noviembre
+      baseFileName = 'base_noviembre';
     }
 
-    // Función inteligente de carga con soporte jpg/jpeg y respaldo a 350594.jpg
     function setAppBackground(baseName) {
       if (!baseName) {
         appContainer.style.backgroundImage = "url('350594.jpg')";
@@ -213,7 +255,6 @@
           appContainer.style.backgroundImage = `url('${baseName}.jpeg')`;
         };
         testJpeg.onerror = () => {
-          // Si no encuentra ninguna de las dos variantes, carga la base neutra
           appContainer.style.backgroundImage = "url('350594.jpg')";
         };
         testJpeg.src = `${baseName}.jpeg`;
@@ -250,7 +291,7 @@
       }
     });
 
-    // 3. Motor de Huellas Dinámicas de Pantalla Completa (Tono Burdeos)
+    // 3. Motor de Huellas Dinámicas de Pantalla Completa (Burdeos)
     const pawLayer = document.getElementById('pawLayer');
     const container = document.getElementById('appContainer');
 
@@ -268,16 +309,16 @@
 
     function getRandomTrajectory(W, H) {
       const routes = [
-        { x0: -30, y0: H * 0.08, x1: W + 30, y1: H * 0.12 }, // Encabezado / Logo
-        { x0: -30, y0: -20, x1: W + 30, y1: H + 30 },        // Diagonal completa descendente
-        { x0: -30, y0: H + 30, x1: W + 30, y1: -20 },        // Diagonal completa ascendente
-        { x0: W * 0.28, y0: -30, x1: W * 0.35, y1: H + 30 }, // Vertical descendente
-        { x0: W * 0.72, y0: H + 30, x1: W * 0.65, y1: -30 }, // Vertical ascendente
-        { x0: W + 30, y0: H * 0.05, x1: -30, y1: H * 0.92 }, // Diagonal inversa cruzada
-        { x0: W + 30, y0: H * 0.76, x1: -30, y1: H * 0.82 }, // Zona baja sobre mascotas
-        { x0: -30, y0: H * 0.32, x1: W + 30, y1: H * 0.16 }, // Diagonal corta superior
-        { x0: -30, y0: H * 0.90, x1: W + 30, y1: H * 0.52 }, // Diagonal baja a media
-        { x0: -30, y0: H * 0.94, x1: W + 30, y1: H * 0.96 }  // Cruce de footer
+        { x0: -30, y0: H * 0.08, x1: W + 30, y1: H * 0.12 },
+        { x0: -30, y0: -20, x1: W + 30, y1: H + 30 },
+        { x0: -30, y0: H + 30, x1: W + 30, y1: -20 },
+        { x0: W * 0.28, y0: -30, x1: W * 0.35, y1: H + 30 },
+        { x0: W * 0.72, y0: H + 30, x1: W * 0.65, y1: -30 },
+        { x0: W + 30, y0: H * 0.05, x1: -30, y1: H * 0.92 },
+        { x0: W + 30, y0: H * 0.76, x1: -30, y1: H * 0.82 },
+        { x0: -30, y0: H * 0.32, x1: W + 30, y1: H * 0.16 },
+        { x0: -30, y0: H * 0.90, x1: W + 30, y1: H * 0.52 },
+        { x0: -30, y0: H * 0.94, x1: W + 30, y1: H * 0.96 }
       ];
 
       let idx;
