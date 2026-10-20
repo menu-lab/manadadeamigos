@@ -6,7 +6,7 @@
   <title>Manada de Amigos - Pet Shop & Boutique</title>
 
   <!-- Favicon Oficial 32x32 px en Base64 -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23ffffff'/%3E%3Cellipse cx='16' cy='21' rx='7.5' ry='6' fill='%234a5840'/%3E%3Cellipse cx='8' cy='13' rx='2.5' ry='3.5' transform='rotate(-20 8 13)' fill='%234a5840'/%3E%3Cellipse cx='13' cy='9.5' rx='2.5' ry='3.8' transform='rotate(-6 13 9.5)' fill='%234a5840'/%3E%3Cellipse cx='19' cy='9.5' rx='2.5' ry='3.8' transform='rotate(6 19 9.5)' fill='%234a5840'/%3E%3Cellipse cx='24' cy='13' rx='2.5' ry='3.5' transform='rotate(20 24 13)' fill='%234a5840'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23ffffff'/%3E%3Cellipse cx='16' cy='21' rx='7.5' ry='6' fill='%235c4738'/%3E%3Cellipse cx='8' cy='13' rx='2.5' ry='3.5' transform='rotate(-20 8 13)' fill='%235c4738'/%3E%3Cellipse cx='13' cy='9.5' rx='2.5' ry='3.8' transform='rotate(-6 13 9.5)' fill='%235c4738'/%3E%3Cellipse cx='19' cy='9.5' rx='2.5' ry='3.8' transform='rotate(6 19 9.5)' fill='%235c4738'/%3E%3Cellipse cx='24' cy='13' rx='2.5' ry='3.5' transform='rotate(20 24 13)' fill='%235c4738'/%3E%3C/svg%3E">
 
   <!-- Tipografías Oficiales -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,6 @@
       overflow: hidden;
     }
 
-    /* Fallback por si la imagen se llama con copia */
     @supports not (background: url('350594.jpg')) {
       .app-container {
         background-image: url('350594.jpg - copia.jpg');
@@ -71,34 +70,33 @@
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(4px);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-      border: 1.5px solid rgba(74, 88, 64, 0.25);
+      border: 1.5px solid rgba(92, 71, 56, 0.25);
     }
 
     #soundIcon {
       width: 20px;
       height: 20px;
-      fill: #4a5840;
+      fill: #5c4738;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     #soundToggle.muted #soundIcon {
       opacity: 0.45;
-      fill: #7d8b72;
+      fill: #8c7362;
     }
 
     /* ========================================================
-       BOTONERA ADELGAZADA ESTILO ORIGINAL MANADA DE AMIGOS
-       Color café/verde oliva profundo con círculo blanco
-       Espacio holgado arriba y abajo: Mascotas 100% libres
+       BOTONERA CAFÉ MOCA CÁLIDO (ADELGAZADA Y BAJADA UN POCO)
+       Espacio holgado: Mascotas totalmente libres
        ======================================================== */
     .buttons-wrapper {
       position: absolute;
-      top: 27.5%;
+      top: 28.5%; /* Bajada sutilmente */
       left: 8.5%;
       width: 83%;
       display: flex !important;
       flex-direction: column;
-      gap: 6.5px; /* Separación compacta */
+      gap: 8.5px; /* Separadas un poco */
       z-index: 30 !important;
       visibility: visible !important;
       opacity: 1 !important;
@@ -108,22 +106,22 @@
       position: relative;
       display: flex !important;
       align-items: center;
-      padding: 5.5px 12px; /* Botón bien delgado */
-      background: linear-gradient(180deg, #4c5841 0%, #3d4734 100%) !important;
+      padding: 6px 13px; /* Delgadas y ergonómicas */
+      background: linear-gradient(180deg, #5c4738 0%, #463427 100%) !important; /* Café más claro */
       border-radius: 50px;
       text-decoration: none;
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 2px 0 #283022;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 2px 0 #2e2016;
       cursor: pointer;
       transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s;
     }
 
     .manada-btn:active {
       transform: translateY(1.5px) scale(0.98);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0 #283022;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0 #2e2016;
     }
 
-    /* Círculo blanco que aloja el icono original */
+    /* Círculo blanco que aloja el icono */
     .btn-circle-icon {
       width: 29px;
       height: 29px;
@@ -139,14 +137,14 @@
     .btn-circle-icon svg {
       width: 16px;
       height: 16px;
-      fill: #3e4a35;
+      fill: #463427;
     }
 
     /* Barra vertical divisoria blanca */
     .btn-divider {
       width: 1px;
       height: 22px;
-      background: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.4);
       margin: 0 12px;
     }
 
@@ -227,7 +225,7 @@
     }
 
     .btn-visitanos-touch:active {
-      background-color: rgba(74, 88, 64, 0.15);
+      background-color: rgba(92, 71, 56, 0.15);
     }
 
     /* Horario inferior */
@@ -297,7 +295,7 @@
     <!-- Capa de Huellas Interactivas -->
     <div id="pawLayer"></div>
 
-    <!-- BOTONERA CAFÉ/VERDE OLIVA ADELGAZADA -->
+    <!-- BOTONERA CAFÉ MOCA CALIBRADA -->
     <nav class="buttons-wrapper" aria-label="Canales oficiales de Manada de Amigos">
       
       <!-- 1. WhatsApp -->
