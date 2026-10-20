@@ -86,17 +86,16 @@
     }
 
     /* ========================================================
-       BOTONERA CAFÉ MOCA CÁLIDO (ADELGAZADA Y BAJADA UN POCO)
-       Espacio holgado: Mascotas totalmente libres
+       BOTONERA CAFÉ MOCA CÁLIDO (Z-INDEX 30)
        ======================================================== */
     .buttons-wrapper {
       position: absolute;
-      top: 28.5%; /* Bajada sutilmente */
+      top: 28.5%;
       left: 8.5%;
       width: 83%;
       display: flex !important;
       flex-direction: column;
-      gap: 8.5px; /* Separadas un poco */
+      gap: 8.5px;
       z-index: 30 !important;
       visibility: visible !important;
       opacity: 1 !important;
@@ -106,8 +105,8 @@
       position: relative;
       display: flex !important;
       align-items: center;
-      padding: 6px 13px; /* Delgadas y ergonómicas */
-      background: linear-gradient(180deg, #5c4738 0%, #463427 100%) !important; /* Café más claro */
+      padding: 6px 13px;
+      background: linear-gradient(180deg, #5c4738 0%, #463427 100%) !important;
       border-radius: 50px;
       text-decoration: none;
       border: 1.5px solid rgba(255, 255, 255, 0.3);
@@ -121,7 +120,6 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0 #2e2016;
     }
 
-    /* Círculo blanco que aloja el icono */
     .btn-circle-icon {
       width: 29px;
       height: 29px;
@@ -140,7 +138,6 @@
       fill: #463427;
     }
 
-    /* Barra vertical divisoria blanca */
     .btn-divider {
       width: 1px;
       height: 22px;
@@ -148,7 +145,6 @@
       margin: 0 12px;
     }
 
-    /* Textos del Botón */
     .btn-texts {
       flex: 1;
       text-align: left;
@@ -174,7 +170,6 @@
       letter-spacing: 0.2px;
     }
 
-    /* Patita de mascota decorativa a la derecha */
     .paw-watermark {
       width: 18px;
       height: 18px;
@@ -188,7 +183,6 @@
       fill: #FFFFFF;
     }
 
-    /* Cursor de mano interactivo */
     .hand-cursor {
       position: absolute;
       right: 10px;
@@ -211,7 +205,7 @@
       50% { transform: translateY(-3px) rotate(-5deg); }
     }
 
-    /* Footer Fijo de Ubicación sobre la pastilla de la imagen */
+    /* Footer Fijo de Ubicación */
     .btn-visitanos-touch {
       position: absolute;
       top: 86.2%;
@@ -228,7 +222,6 @@
       background-color: rgba(92, 71, 56, 0.15);
     }
 
-    /* Horario inferior */
     .bottom-schedule-line {
       position: absolute;
       bottom: 0.8%;
@@ -245,15 +238,18 @@
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.7);
     }
 
-    /* Capa de Huellas Interactivas (Burdeos) */
+    /* ========================================================
+       CAPA DE HUELLAS POR ENCIMA DE TODO (Z-INDEX 50)
+       No bloquea clicks ni taps gracias a pointer-events: none
+       ======================================================== */
     #pawLayer {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      z-index: 20;
+      pointer-events: none !important;
+      z-index: 50 !important;
       overflow: hidden;
     }
 
@@ -264,11 +260,12 @@
       opacity: 0;
       transform: scale(0.4);
       transition: opacity 0.5s ease-in, transform 0.5s ease-out;
-      filter: drop-shadow(0 1px 2px rgba(80, 10, 20, 0.3));
+      filter: drop-shadow(0 2px 4px rgba(80, 10, 20, 0.45));
+      pointer-events: none;
     }
 
     .paw-print.visible {
-      opacity: 0.88;
+      opacity: 0.92;
       transform: scale(1);
     }
 
@@ -282,20 +279,16 @@
 <body>
 
   <div class="app-container" id="appContainer">
-    <!-- Reproductor de Audio -->
     <audio id="bgMusic" loop preload="auto"></audio>
 
-    <!-- Botón Toggle de Sonido Superior Izquierdo -->
+    <!-- Botón Toggle de Sonido (Z-Index 40) -->
     <div id="soundToggle" class="muted" title="Activar/Desactivar Música">
       <svg id="soundIcon" viewBox="0 0 24 24">
         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
       </svg>
     </div>
 
-    <!-- Capa de Huellas Interactivas -->
-    <div id="pawLayer"></div>
-
-    <!-- BOTONERA CAFÉ MOCA CALIBRADA -->
+    <!-- Botonera Central (Z-Index 30) -->
     <nav class="buttons-wrapper" aria-label="Canales oficiales de Manada de Amigos">
       
       <!-- 1. WhatsApp -->
@@ -390,11 +383,13 @@
 
     </nav>
 
-    <!-- Footer Fijo de Ubicación Táctil (Seminario 850) -->
+    <!-- Footer Fijo de Ubicación (Z-Index 35) -->
     <a href="https://www.google.com/maps/search/?api=1&query=Seminario+850+local+4,+Nunoa,+Santiago" target="_blank" rel="noopener" class="btn-visitanos-touch" title="Ubicación y Cómo llegar"></a>
 
-    <!-- Horario inferior -->
     <div class="bottom-schedule-line">Horario: Lun-Vie 10:00 a 20:00 hrs | Sáb 09:00 a 14:00 hrs</div>
+
+    <!-- CAPA DE HUELLAS AL FINAL: PASA POR ENCIMA DE TODO (Z-INDEX 50) -->
+    <div id="pawLayer"></div>
   </div>
 
   <script>
