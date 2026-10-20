@@ -35,7 +35,7 @@
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     }
 
-    /* Contenedor Adaptativo Single-Viewport: 900x1700 estricto */
+    /* Contenedor Adaptativo Single-Viewport: Relación estricta 900x1700 */
     .app-container {
       position: relative;
       height: 100dvh;
@@ -49,7 +49,7 @@
       overflow: hidden;
     }
 
-    /* Fallback para compatibilidad con la imagen sin botones */
+    /* Fallback para el nombre con copia si no ha sido renombrada */
     @supports not (background: url('350594.jpg')) {
       .app-container {
         background-image: url('350594.jpg - copia.jpg');
@@ -61,8 +61,8 @@
       position: absolute;
       top: 2.2%;
       left: 3.8%;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       z-index: 35;
       cursor: pointer;
       display: flex;
@@ -76,8 +76,8 @@
     }
 
     #soundIcon {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       fill: #4a5840;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
@@ -88,16 +88,18 @@
     }
 
     /* ========================================================
-       BOTONERA ESTILIZADA EN CÓDIGO (ESTILO MANADA DE AMIGOS)
+       BOTONERA COMPACTA CALIBRADA:
+       Comienza en 26.5% y finaliza en 62.8%
+       DEJA TOTALMENTE LIBRES A LAS MASCOTAS (65.5% en adelante)
        ======================================================== */
     .buttons-wrapper {
       position: absolute;
-      top: 26.5%;
+      top: 26.2%;
       left: 8.5%;
       width: 83%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 7.5px; /* Espaciado compacto para máxima holgura inferior */
       z-index: 25;
     }
 
@@ -106,41 +108,41 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding: 10px 18px;
+      padding: 7px 15px; /* Altura estilizada y delgada */
       background: #FFFFFF;
       border-radius: 50px;
       text-decoration: none;
-      border: 2px solid #e5ded2;
-      box-shadow: 0 4px 12px rgba(62, 74, 53, 0.08), 0 3px 0 #d1c6b4;
+      border: 1.5px solid #e5ded2;
+      box-shadow: 0 3px 8px rgba(62, 74, 53, 0.08), 0 2px 0 #d1c6b4;
       cursor: pointer;
       transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s;
     }
 
     .manada-btn:active {
-      transform: translateY(2px) scale(0.98);
-      box-shadow: 0 1px 4px rgba(62, 74, 53, 0.1), 0 1px 0 #d1c6b4;
+      transform: translateY(1.5px) scale(0.98);
+      box-shadow: 0 1px 3px rgba(62, 74, 53, 0.1), 0 1px 0 #d1c6b4;
     }
 
     /* Icono circular a la izquierda */
     .manada-icon {
-      width: 38px;
-      height: 38px;
-      min-width: 38px;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      margin-right: 14px;
+      font-size: 15px;
+      margin-right: 12px;
       color: #FFFFFF;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
 
-    /* Colores temáticos armonizados con la paleta de la marca */
-    .btn-wa .manada-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
-    .btn-ig .manada-icon { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
-    .btn-web .manada-icon { background: linear-gradient(135deg, #4a5840, #343f2c); }
-    .btn-tt .manada-icon { background: linear-gradient(135deg, #000000, #25F4EE); }
+    /* Gradientes temáticos */
+    .btn-wa .manada-icon     { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .btn-ig .manada-icon     { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
+    .btn-web .manada-icon    { background: linear-gradient(135deg, #4a5840, #343f2c); }
+    .btn-tt .manada-icon     { background: linear-gradient(135deg, #000000, #25F4EE); }
     .btn-google .manada-icon { background: linear-gradient(135deg, #4285F4, #34A853); }
 
     /* Textos del Botón */
@@ -151,29 +153,29 @@
 
     .manada-text .title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-size: 12.5px;
       font-weight: 800;
       color: #3e4a35;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       line-height: 1.1;
     }
 
     .manada-text .sub {
-      font-size: 10.5px;
+      font-size: 9.5px;
       color: #7d8b72;
       font-weight: 700;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     /* Cursor de mano interactivo */
     .hand-cursor {
       position: absolute;
-      right: 14px;
-      bottom: -6px;
-      font-size: 18px;
+      right: 12px;
+      bottom: -5px;
+      font-size: 15px;
       color: #3e4a35;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
       animation: tapGesture 2s infinite ease-in-out;
       pointer-events: none;
     }
@@ -183,7 +185,7 @@
       50% { transform: translateY(-4px) rotate(-5deg); }
     }
 
-    /* Footer Fijo Transparente sobre la pastilla de ubicación de la imagen */
+    /* Footer Fijo de Ubicación sobre la pastilla de la imagen */
     .btn-visitanos-touch {
       position: absolute;
       top: 86.2%;
@@ -231,8 +233,8 @@
 
     .paw-print {
       position: absolute;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       opacity: 0;
       transform: scale(0.4);
       transition: opacity 0.5s ease-in, transform 0.5s ease-out;
@@ -267,132 +269,4 @@
     <!-- Capa de Huellas Interactivas -->
     <div id="pawLayer"></div>
 
-    <!-- BOTONERA CENTRAL COMPLETA GENERADA CON CÓDIGO -->
-    <nav class="buttons-wrapper" aria-label="Canales oficiales de Manada de Amigos">
-      
-      <!-- 1. WhatsApp -->
-      <a href="https://wa.me/56941173661?text=Hola%20Manada%20de%20Amigos,%20me%20gustar%C3%ADa%20hacerles%20una%20consulta.%20Mi%20nombre%20es:%20" target="_blank" rel="noopener" class="manada-btn btn-wa">
-        <div class="manada-icon">
-          <i class="fa-brands fa-whatsapp"></i>
-        </div>
-        <div class="manada-text">
-          <div class="title">WhatsApp Oficial</div>
-          <div class="sub">Atención personalizada y pedidos</div>
-        </div>
-        <div class="hand-cursor"><i class="fa-solid fa-hand-pointer"></i></div>
-      </a>
-
-      <!-- 2. Instagram -->
-      <a href="https://www.instagram.com/manadadeamigos" target="_blank" rel="noopener" class="manada-btn btn-ig">
-        <div class="manada-icon">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-        <div class="manada-text">
-          <div class="title">Instagram</div>
-          <div class="sub">@manadadeamigos novedades y tips</div>
-        </div>
-        <div class="hand-cursor"><i class="fa-solid fa-hand-pointer"></i></div>
-      </a>
-
-      <!-- 3. Sitio Web -->
-      <a href="https://www.manadadeamigos.cl" target="_blank" rel="noopener" class="manada-btn btn-web">
-        <div class="manada-icon">
-          <i class="fa-solid fa-bag-shopping"></i>
-        </div>
-        <div class="manada-text">
-          <div class="title">Sitio Web & Tienda</div>
-          <div class="sub">Catálogo completo de productos</div>
-        </div>
-        <div class="hand-cursor"><i class="fa-solid fa-hand-pointer"></i></div>
-      </a>
-
-      <!-- 4. TikTok -->
-      <a href="https://www.tiktok.com/@manada.de.amigos" target="_blank" rel="noopener" class="manada-btn btn-tt">
-        <div class="manada-icon">
-          <i class="fa-brands fa-tiktok"></i>
-        </div>
-        <div class="manada-text">
-          <div class="title">TikTok</div>
-          <div class="sub">Videos divertidos de la manada</div>
-        </div>
-        <div class="hand-cursor"><i class="fa-solid fa-hand-pointer"></i></div>
-      </a>
-
-      <!-- 5. NUEVO BOTÓN: Déjanos tu huella (Evaluación en Google) -->
-      <a href="https://g.page/r/CQ4ve_FbFE9LEAE/review" target="_blank" rel="noopener" class="manada-btn btn-google">
-        <div class="manada-icon">
-          <i class="fa-solid fa-paw"></i>
-        </div>
-        <div class="manada-text">
-          <div class="title">Déjanos tu huella</div>
-          <div class="sub">Tu opinión nos importa mucho</div>
-        </div>
-        <div class="hand-cursor"><i class="fa-solid fa-hand-pointer"></i></div>
-      </a>
-
-    </nav>
-
-    <!-- Footer Fijo de Ubicación Táctil (Seminario 850) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Seminario+850+local+4,+Nunoa,+Santiago" target="_blank" rel="noopener" class="btn-visitanos-touch" title="Ubicación y Cómo llegar"></a>
-
-    <!-- Línea de Horario en bottom 0.8% -->
-    <div class="bottom-schedule-line">Horario: Lun-Vie 10:00 a 20:00 hrs | Sáb 09:00 a 14:00 hrs</div>
-  </div>
-
-  <script>
-    // 1. Selector de Fondo Dinámico con verificación dual (.jpg / .jpeg)
-    const appContainer = document.getElementById('appContainer');
-    const currentMonth = new Date().getMonth();
-
-    let baseFileName = null;
-
-    if (currentMonth === 0 || currentMonth === 1) {
-      baseFileName = 'base_enero_febrero';
-    } else if (currentMonth === 2) {
-      baseFileName = 'base_marzo';
-    } else if (currentMonth === 8) {
-      baseFileName = 'base_septiembre';
-    } else if (currentMonth === 9) {
-      baseFileName = 'base_octubre';
-    } else if (currentMonth === 10) {
-      baseFileName = 'base_noviembre';
-    }
-
-    function setAppBackground(baseName) {
-      if (!baseName) {
-        appContainer.style.backgroundImage = "url('350594.jpg')";
-        return;
-      }
-
-      const testJpg = new Image();
-      testJpg.onload = () => {
-        appContainer.style.backgroundImage = `url('${baseName}.jpg')`;
-      };
-      testJpg.onerror = () => {
-        const testJpeg = new Image();
-        testJpeg.onload = () => {
-          appContainer.style.backgroundImage = `url('${baseName}.jpeg')`;
-        };
-        testJpeg.onerror = () => {
-          appContainer.style.backgroundImage = "url('350594.jpg')";
-        };
-        testJpeg.src = `${baseName}.jpeg`;
-      };
-      testJpg.src = `${baseName}.jpg`;
-    }
-
-    setAppBackground(baseFileName);
-
-    // 2. Alternancia de pistas de audio por sesión
-    const tracks = ['sonido1.mp3', 'sonido2.mp3'];
-    let lastTrack = localStorage.getItem('lastPlayedTrack');
-    let nextTrack = (lastTrack === 'sonido1.mp3') ? 'sonido2.mp3' : 'sonido1.mp3';
-    localStorage.setItem('lastPlayedTrack', nextTrack);
-
-    const audio = document.getElementById('bgMusic');
-    audio.src = nextTrack;
-
-    const soundToggle = document.getElementById('soundToggle');
-    const soundIcon = document.getElementById('soundIcon');
-    const iconMuted = 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z';
-    const iconActive = 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.
+    <!-- BOTONERA COMPACTA:
